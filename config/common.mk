@@ -62,9 +62,9 @@ PRODUCT_COPY_FILES += \
     vendor/zrom/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/zrom/prebuilt/common/bin/sysinit:system/bin/sysinit
 
-# Workaround for NovaLauncher zipalign fails
+# Workaround for Apex Launcher zipalign fails
 PRODUCT_COPY_FILES += \
-    vendor/zrom/prebuilt/common/app/NovaLauncher.apk:system/app/NovaLauncher.apk
+    vendor/zrom/prebuilt/common/app/ApexLauncher.apk:system/app/ApexLauncher.apk
 
 # Embed SuperUser
 SUPERUSER_EMBEDDED := true

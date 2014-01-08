@@ -52,11 +52,16 @@ then
     echo -e ${red}"Invalid path to apkcerts.txt, set APKCERTS to the correct path."${txtrst}
 fi
 
-if [ "$(which pngcrush)" != "" ];
+if [ "$(which pngquant)" != "" ];
+then
+    optimize_png () {
+        pngquant --speed 1 --force --ext .png $1 1> /dev/null 2> /dev/null
+    }
+elif [ "$(which pngcrush)" != "" ];
 then
     optimize_png () {
         pngcrush -q ${BRUTECRUSH} $1 ${1}.out 1> /dev/null 2> /dev/null
-        mv ${1}.out ${1}
+        mv ${1}.out ${1} 2> /dev/null
     }
 elif [ "$(which optipng)" != "" ];
 then
@@ -74,7 +79,7 @@ then
         pngout $1
     }
 else
-    echo -e ${red}"Please install pngcrush, optipng, or pngout"${txtrst}
+    echo -e ${red}"Please install pngquant, pngcrush, optipng, or pngout"${txtrst}
     exit 1;
 fi
 
@@ -119,6 +124,11 @@ then
             echo -e ${red}"Unable to find certificate for $NAME"${txtrst}
             exit 1;
         fi
+        if [ "$CERT" = "PRESIGNED" ];
+        then
+            echo -e ${cya}"$NAME is presigned, skipping"${txtrst}
+            exit 1;
+        fi
     fi
 
     [ $QUIET ] || echo -e ${bldylw}"Certificate:${txtrst} $CERT";
@@ -128,7 +138,12 @@ then
     trap "rm -rf $TMPDIR; exit" INT TERM EXIT
     cd $TMPDIR/$NAME
     unzip -q $BASE/$1
-    for x in `find . -name "*.png" | grep -v "\.9.png$" | tr "\n" " "`
+    if [ "$NINEPATCH" = "1" ]; then
+        PNG_FILES=`find . -name "*.png" | tr "\n" " "`
+    else
+        PNG_FILES=`find . -name "*.png" | grep -v "\.9.png$" | tr "\n" " "`
+    fi
+    for x in $PNG_FILES
     do
         [ $QUIET ] || echo -e ${bldgrn}"Crushing${txtrst} $x"
         optimize_png $x

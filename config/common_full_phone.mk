@@ -20,3 +20,5 @@ PRODUCT_COPY_FILES += \
 # SIM Toolkit
 PRODUCT_PACKAGES += \
     Stk
+
+$(call inherit-product, vendor/zrom/config/telephony.mk)

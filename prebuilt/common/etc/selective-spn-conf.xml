@@ -261,14 +261,14 @@
   <spnOverride numeric="73008"  spn="VTR MOvil" />
   <spnOverride numeric="73099"  spn="Will" />
   <!-- China -->
-  <spnOverride numeric="46006"  spn="中国联通" />
-  <spnOverride numeric="46000"  spn="中国移动" />
-  <spnOverride numeric="46002"  spn="中国移动" />
-  <spnOverride numeric="46007"  spn="中国移动" />
-  <spnOverride numeric="46003"  spn="中国电信" />
-  <spnOverride numeric="46005"  spn="中国电信" />
+  <spnOverride numeric="46006"  spn="????" />
+  <spnOverride numeric="46000"  spn="????" />
+  <spnOverride numeric="46002"  spn="????" />
+  <spnOverride numeric="46007"  spn="????" />
+  <spnOverride numeric="46003"  spn="????" />
+  <spnOverride numeric="46005"  spn="????" />
   <spnOverride numeric="46020"  spn="China Tietong" />
-  <spnOverride numeric="46001"  spn="中国联通" />
+  <spnOverride numeric="46001"  spn="????" />
   <!-- Colombia -->
   <spnOverride numeric="732001" spn="Colombia Telecomunicaciones S.A. - Telecom" />
   <spnOverride numeric="732101" spn="Comcel" />
@@ -549,7 +549,7 @@
   <spnOverride numeric="45403"  spn="3 (3G)" />
   <spnOverride numeric="45405"  spn="3 CDMA" />
   <spnOverride numeric="45404"  spn="3 Dual (2G)" />
-  <spnOverride numeric="45412"  spn="中國移動香港" />
+  <spnOverride numeric="45412"  spn="??????" />
   <spnOverride numeric="45409"  spn="China Motion Telecom" />
   <spnOverride numeric="45407"  spn="China Unicom" />
   <spnOverride numeric="45411"  spn="China-Hongkong Telecom" />
@@ -1406,7 +1406,6 @@
   <spnOverride numeric="24003"  spn="Nordisk Mobiltelefon" />
   <spnOverride numeric="24010"  spn="SpringMobil" />
   <spnOverride numeric="24024"  spn="Sweden 2G" />
-  <spnOverride numeric="24024"  spn="Sweden 2G" />
   <spnOverride numeric="24005"  spn="Sweden 3G" />
   <spnOverride numeric="24014"  spn="TDC Mobil" />
   <spnOverride numeric="24007"  spn="Tele2Comviq" />
@@ -1434,14 +1433,14 @@
   <spnOverride numeric="46602"  spn="APTG" />
   <spnOverride numeric="46605"  spn="APTG" />
   <spnOverride numeric="46611"  spn="Chunghwa LDM" />
-  <spnOverride numeric="46692"  spn="中華電信" />
-  <spnOverride numeric="46601"  spn="遠傳電信" />
-  <spnOverride numeric="46688"  spn="和信電訊" />
-  <spnOverride numeric="46693"  spn="東信電訊" />
-  <spnOverride numeric="46697"  spn="台灣大哥大" />
-  <spnOverride numeric="46699"  spn="泛亞電信" />
+  <spnOverride numeric="46692"  spn="????" />
+  <spnOverride numeric="46601"  spn="????" />
+  <spnOverride numeric="46688"  spn="????" />
+  <spnOverride numeric="46693"  spn="????" />
+  <spnOverride numeric="46697"  spn="?????" />
+  <spnOverride numeric="46699"  spn="????" />
   <spnOverride numeric="46606"  spn="Tuntex" />
-  <spnOverride numeric="46689"  spn="威寶電信" />
+  <spnOverride numeric="46689"  spn="????" />
   <!-- Tajikistan -->
   <spnOverride numeric="43604"  spn="Babilon-M" />
   <spnOverride numeric="43605"  spn="CTJTHSC Tajik-tel" />

@@ -192,4 +192,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.zrom.version=$(ZROM_VERSION) \
     ro.modversion=$(ZROM_MOD_VERSION) \
     ro.zrom.buildtype=$(ZROM_BUILD_TYPE)
-
+    
+#Default buil.prop tweaks
+PRODUCT_PROPERTY_OVERRIDES += \
+    pm.sleep.mode=1 \
+    wifi.supplicant_scan_interval=180

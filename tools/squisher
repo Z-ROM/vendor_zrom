@@ -177,6 +177,10 @@ if [ -n $ABIGEN ]; then
 	echo ""
 fi
 
+# Add changelog
+. $ANDROID_BUILD_TOP/vendor/zrom/tools/changelog
+
+
 # Pack it up and sign
 echo -e ${grn}"Zipping package..."${txtrst}
 ( cd $REPACK/ota; zip $QUIET -r $REPACK/update.zip . )

@@ -23,8 +23,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # ROM Statistics and ROM Identification
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.romstats.url=http://www.drdevs.com/stats/ose/ \
-    ro.romstats.name=OSE \
+    ro.romstats.url=http://www.drdevs.com/stats/zrom/ \
+    ro.romstats.name=ZROM \
     ro.romstats.version=$(shell date +"%m-%d-%y") \
     ro.romstats.askfirst=0 \
     ro.romstats.tframe=1
@@ -131,6 +131,15 @@ PRODUCT_PACKAGES += \
     libstagefright_soft_ffmpegvdec \
     libFFmpegExtractor \
     libnamparser
+
+# Theme engine
+PRODUCT_PACKAGES += \
+    ThemeChooser \
+    ThemesProvider
+
+PRODUCT_COPY_FILES += \
+    vendor/zrom/config/permissions/com.tmobile.software.themes.xml:system/etc/permissions/com.tmobile.software.themes.xml \
+    vendor/zrom/config/permissions/org.cyanogenmod.theme.xml:system/etc/permissions/org.cyanogenmod.theme.xml
 
 # easy way to extend to add more packages
 -include vendor/extra/product.mk

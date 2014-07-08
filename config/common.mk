@@ -80,7 +80,8 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt Packages
 PRODUCT_COPY_FILES += \
-    vendor/zrom/prebuilt/common/app/ApexLauncher.apk:system/app/ApexLauncher.apk
+    vendor/zrom/prebuilt/common/app/ApexLauncher.apk:system/app/ApexLauncher.apk \
+    vendor/zrom/prebuilt/common/app/GoogleTTS.apk:system/app/GoogleTTS.apk
 
 # Embed SuperUser
 SUPERUSER_EMBEDDED := true

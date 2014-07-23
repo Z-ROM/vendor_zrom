@@ -105,11 +105,6 @@ PRODUCT_PACKAGES += \
     KernelTweaker \
     ZPapers
 
-# DSPManager
-PRODUCT_PACKAGES += \
-    DSPManager \
-    libcyanogen-dsp \
-    audio_effects.conf
 
 # Extra Optional packages
 PRODUCT_PACKAGES += \
@@ -126,6 +121,11 @@ PRODUCT_PACKAGES += \
     mount.exfat \
     fsck.exfat \
     mkfs.exfat
+
+
+# Viper4Android
+PRODUCT_COPY_FILES += \
+    vendor/zrom/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
 
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \

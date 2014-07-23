@@ -12,6 +12,7 @@ usage()
     echo -e "        2 - make dirty"
     echo -e "        3 - make magicbrownies"
     echo -e "    -d  Use dex optimizations"
+    echo -e "    -f Build with prebuilt chromium"
     echo -e "    -j# Set jobs"
     echo -e "    -r  Reset source tree before build"
     echo -e "    -s  Sync before build"
@@ -83,7 +84,7 @@ export USE_CCACHE=1
 
 opt_clean=0
 opt_dex=0
-opt_initlogo=0
+opt_chromium=0
 opt_jobs="$CPUS"
 opt_reset=0
 opt_sync=0
@@ -91,10 +92,11 @@ opt_pipe=0
 opt_olvl=0
 opt_verbose=0
 
-while getopts "c:dj:o:prsv" opt; do
+while getopts "c:dfj:o:prsv" opt; do
     case "$opt" in
     c) opt_clean="$OPTARG" ;;
     d) opt_dex=1 ;;
+    f) opt_chromium=1 ;;
     j) opt_jobs="$OPTARG" ;;
     s) opt_sync=1 ;;
     p) opt_pipe=1 ;;
@@ -162,6 +164,12 @@ echo -e ${bldblu}"Setting up environment"${txtrst}
 rm -f $OUTDIR/target/product/$device/system/build.prop
 rm -f $OUTDIR/target/product/$device/system/app/*.odex
 rm -f $OUTDIR/target/product/$device/system/framework/*.odex
+
+if [ "$opt_chromium" -ne 0 ]; then
+    echo -e ""
+    echo -e ${bldblu}"Using prebuilt chromium"${txtrst}
+    export USE_PREBUILT_CHROMIUM=1
+fi
 
 # lunch device
 echo -e ""

@@ -9,7 +9,7 @@
 # cyanogen - shade@chemlab.org
 # ChrisSoyars - me@ctso.me
 
-. ${ANDROID_BUILD_TOP}/vendor/ose/tools/colors
+. $ANDROID_BUILD_TOP/vendor/zrom/tools/colors
 
 OUT_TARGET_HOST=$(uname -a | grep Darwin)
 if [ -z "$OUT_TARGET_HOST" ]
@@ -36,6 +36,8 @@ fi
 if [ "$APKCERTS" = "" ];
 then
     if [ "$TARGET_BUILD_VARIANT" = "userdebug" ]; then
+       TARGET_BUILD_VARIANT="eng"
+    elif [ "$TARGET_BUILD_VARIANT" = "user" ]; then
        TARGET_BUILD_VARIANT="eng"
     fi
 
@@ -66,7 +68,7 @@ then
 elif [ "$(which optipng)" != "" ];
 then
     optimize_png () {
-        optipng -nc -nb -o7 -quiet $1 1> /dev/null 2> /dev/null
+        optipng -o7 -quiet $1 1> /dev/null 2> /dev/null
     }
 elif [ "$(which pngout-static)" != "" ];
 then
@@ -155,8 +157,8 @@ then
 
     [ $QUIET ] || echo -e ${bldgrn}"Resigning with cert:${txtrst} `echo -e $CERT`"
 
-    [ $QUIET ] || echo -e java -jar $OUTDIR/host/$OUT_TARGET_HOST/framework/signapk.jar $ANDROID_BUILD_TOP/$CERT $ANDROID_BUILD_TOP/$KEY $NAME signed_$NAME
-    java -jar $OUTDIR/host/$OUT_TARGET_HOST/framework/signapk.jar $ANDROID_BUILD_TOP/$CERT $ANDROID_BUILD_TOP/$KEY $NAME signed_$NAME
+    [ $QUIET ] || echo java -jar $ANDROID_HOST_OUT/framework/signapk.jar $ANDROID_BUILD_TOP/$CERT $ANDROID_BUILD_TOP/$KEY $NAME signed_$NAME
+     java -jar $ANDROID_HOST_OUT/framework/signapk.jar $ANDROID_BUILD_TOP/$CERT $ANDROID_BUILD_TOP/$KEY $NAME signed_$NAME
     [ $QUIET ] || echo -e ${bldgrn}"Zipalign.."${txtrst}
     zipalign -f 4 signed_$NAME $BASE/$1
     if [ ! $QUIET ]; then

@@ -116,29 +116,29 @@ device="$1"
 eval $(grep "^ZROM_VERSION_" vendor/zrom/config/common.mk | sed 's/ [:=]\+ /=/g' | sed 's/shell//g')
 VERSION="$ZROM_VERSION_MAJOR.$ZROM_VERSION_MINOR.$ZROM_VERSION_MAINTENANCE"
 
-echo -e ${cya}"Building ${bldppl}ZROM $VERSION"${txtrst}
+echo -e ${cya}"Building ${bldppl}ZROM"${txtrst}
 
 if [ "$opt_clean" -ne 0 ]; then
     make clean >/dev/null
     echo -e ""
-    echo -e ${bldblu}"Out is clean"${txtrst}
+    echo -e ${bldylw}"Out is clean"${txtrst}
     echo -e ""
 elif [ "$opt_clean" -eq 2 ]; then
     make dirty >/dev/null
     echo -e ""
-    echo -e ${bldblu}"Out is dirty"${txtrst}
+    echo -e ${bldylw}"Out is dirty"${txtrst}
     echo -e ""
 elif [ "$opt_clean" -eq 3 ]; then
     make magicbrownies >/dev/null
     echo -e ""
-    echo -e ${bldblu}"Enjoy your magical adventure"${txtrst}
+    echo -e ${bldylw}"Enjoy your magical adventure"${txtrst}
     echo -e ""
 fi
 
 # reset source tree
 if [ "$opt_reset" -ne 0 ]; then
     echo -e ""
-    echo -e ${bldblu}"Resetting source tree and removing all uncommitted changes"${txtrst}
+    echo -e ${bldbylw}"Resetting source tree and removing all uncommitted changes"${txtrst}
     repo forall -c "git reset --hard HEAD; git clean -qf"
     echo -e ""
 fi
@@ -146,7 +146,7 @@ fi
 # sync with latest sources
 if [ "$opt_sync" -eq 1 ]; then
     echo -e ""
-    echo -e ${bldblu}"Fetching latest sources"${txtrst}
+    echo -e ${bldylw}"Fetching latest sources"${txtrst}
     repo sync -j"$opt_jobs"
     echo -e ""
 fi
@@ -167,7 +167,7 @@ rm -f $OUTDIR/target/product/$device/system/framework/*.odex
 
 if [ "$opt_chromium" -ne 0 ]; then
     echo -e ""
-    echo -e ${bldblu}"Using prebuilt chromium"${txtrst}
+    echo -e ${bldylw}"Using prebuilt chromium"${txtrst}
     export USE_PREBUILT_CHROMIUM=1
 fi
 
@@ -223,4 +223,4 @@ t2=$($DATE +%s)
 tmin=$(( (t2-t1)/60 ))
 tsec=$(( (t2-t1)%60 ))
 
-echo -e ${bldgrn}"Total time elapsed:${txtrst} ${grn}$tmin minutes $tsec seconds"${txtrst}
+echo -e ${bldred}"Total time elapsed:${txtrst} ${grn}$tmin minutes $tsec seconds"${txtrst}

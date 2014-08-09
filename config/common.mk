@@ -93,6 +93,7 @@ PRODUCT_PACKAGES += \
     Superuser \
     su \
     OmniSwitch \
+    EOSWeather \
     Basic \
     HoloSpiralWallpaper \
     LiveWallpapersPicker \

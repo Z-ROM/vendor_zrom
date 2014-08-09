@@ -12,7 +12,6 @@ usage()
     echo -e "        2 - make dirty"
     echo -e "        3 - make magicbrownies"
     echo -e "    -d  Use dex optimizations"
-    echo -e "    -i  Static Initlogo"
     echo -e "    -j# Set jobs"
     echo -e "    -r  Reset source tree before build"
     echo -e "    -s  Sync before build"
@@ -92,11 +91,10 @@ opt_pipe=0
 opt_olvl=0
 opt_verbose=0
 
-while getopts "c:dij:prso:v" opt; do
+while getopts "c:dj:prsv" opt; do
     case "$opt" in
     c) opt_clean="$OPTARG" ;;
     d) opt_dex=1 ;;
-    i) opt_initlogo=1 ;;
     j) opt_jobs="$OPTARG" ;;
     s) opt_sync=1 ;;
     p) opt_pipe=1 ;;
@@ -113,7 +111,7 @@ fi
 device="$1"
 
 # get current version
-eval $(grep "^ZROM_VERSION_" vendor/zrom/config/common.mk | sed 's/ *//g')
+eval $(grep "^ZROM_VERSION_" vendor/zrom/config/common.mk | sed 's/ [:=]\+ /=/g' | sed 's/shell//g')
 VERSION="$ZROM_VERSION_MAJOR.$ZROM_VERSION_MINOR.$ZROM_VERSION_MAINTENANCE"
 
 echo -e ${cya}"Building ${bldppl}ZROM $VERSION"${txtrst}
@@ -164,11 +162,6 @@ echo -e ${bldblu}"Setting up environment"${txtrst}
 rm -f $OUTDIR/target/product/$device/system/build.prop
 rm -f $OUTDIR/target/product/$device/system/app/*.odex
 rm -f $OUTDIR/target/product/$device/system/framework/*.odex
-
-# initlogo
-if [ "$opt_initlogo" -ne 0 ]; then
-    export BUILD_WITH_STATIC_INITLOGO=true
-fi
 
 # lunch device
 echo -e ""

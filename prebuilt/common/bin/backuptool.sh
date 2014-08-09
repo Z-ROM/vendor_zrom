@@ -5,7 +5,6 @@
 
 export C=/tmp/backupdir
 export S=/system
-export V=ZROM-4.4
 
 # Preserve /system/addon.d in /tmp/addon.d
 preserve_addon_d() {
@@ -20,14 +19,6 @@ restore_addon_d() {
   rm -rf /tmp/addon.d/
 }
 
-# Check for proper ZROM version
-check_version() {
-  if ( ! grep -q "ro.zrom.version=$V.*" /system/build.prop); then
-    echo "Not running backup from incompatible version"
-    exit
-  fi
-}
-
 # Execute /system/addon.d/*.sh scripts with $1 parameter
 run_stage() {
 for script in $(find /tmp/addon.d/ -name '*.sh' |sort -n); do
@@ -37,7 +28,6 @@ done
 
 case "$1" in
   backup)
-    check_version
     mkdir -p $C
     preserve_addon_d
     run_stage pre-backup
@@ -45,7 +35,6 @@ case "$1" in
     run_stage post-backup
   ;;
   restore)
-    check_version
     run_stage pre-restore
     run_stage restore
     run_stage post-restore

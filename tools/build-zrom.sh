@@ -181,6 +181,7 @@ vendor/zrom/tools/squisher
 
 # cleanup unused built
 rm -f $OUTDIR/target/product/$device/zrom_*-ota*.zip
+rm -f $OUTDIR/target/product/$device/ZROM-ZROM-*.zip
 
 # finished? get elapsed time
 t2=$($DATE +%s)

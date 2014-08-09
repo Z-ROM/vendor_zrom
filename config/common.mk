@@ -86,6 +86,7 @@ PRODUCT_PACKAGES += \
 
 # Optional packages
 PRODUCT_PACKAGES += \
+    OmniSwitch \
     Basic \
     HoloSpiralWallpaper \
     LiveWallpapersPicker \
@@ -93,7 +94,6 @@ PRODUCT_PACKAGES += \
 
 # DSPManager
 PRODUCT_PACKAGES += \
-    OmniSwitch \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf

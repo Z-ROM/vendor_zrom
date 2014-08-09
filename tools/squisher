@@ -167,6 +167,7 @@ fi
 
 # Determine what to name the new signed package
 MODVERSION=`sed -n -e'/ro\.modversion/s/^.*=//p' $REPACK/ota/system/build.prop`
+ABIGEN=`grep 'ro.product.cpu.abi=' $REPACK/ota/system/build.prop | sed -e 's/ro.product.cpu.abi=//g'`
 OUTFILE=$OUT/$MODVERSION.zip
 echo MODVERSION: $MODVERSION
 

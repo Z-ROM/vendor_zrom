@@ -64,33 +64,36 @@ PRODUCT_COPY_FILES += \
     vendor/zrom/prebuilt/common/etc/mkshrc:system/etc/mkshrc \
     vendor/zrom/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf
 
+# Init.d Support
 PRODUCT_COPY_FILES += \
     vendor/zrom/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/zrom/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/zrom/prebuilt/common/bin/sysinit:system/bin/sysinit
 
-# Workaround for Apex Launcher zipalign fails
+# Prebuilt Packages
 PRODUCT_COPY_FILES += \
     vendor/zrom/prebuilt/common/app/ApexLauncher.apk:system/app/ApexLauncher.apk
 
 # Embed SuperUser
 SUPERUSER_EMBEDDED := true
 
-# Required packages
+# System packages
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Development \
-    ZPapers \
     Superuser \
-    su
-
-# Optional packages
-PRODUCT_PACKAGES += \
+    su \
     OmniSwitch \
     Basic \
     HoloSpiralWallpaper \
     LiveWallpapersPicker \
     PhaseBeam
+
+# Extra packages
+PRODUCT_PACKAGES += \
+    LockClock \
+    KernelTweaker \
+    ZPapers
 
 # DSPManager
 PRODUCT_PACKAGES += \

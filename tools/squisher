@@ -203,7 +203,7 @@ MD5VAL=`cat $img.md5sum  | awk '{ print $1 }'`
 DEVICE=`echo -e $TARGET_PRODUCT | cut -d "_" -f 2`
 
 echo -e ""
-echo -e ${bldylw}"####################################"
+echo -e ${bldppl}"####################################"
 echo -e "#     ____________                 #"
 echo -e "#    /            /                #"
 echo -e "#   /________    /                 #"

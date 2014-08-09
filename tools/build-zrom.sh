@@ -7,7 +7,10 @@ usage()
     echo -e "  build-zrom.sh [options] device"
     echo -e ""
     echo -e ${txtbld}"  Options:"${txtrst}
-    echo -e "    -c  Clean before build"
+    echo -e "    -c# Cleanin options before build:"
+    echo -e "        1 - make clean"
+    echo -e "        2 - make dirty"
+    echo -e "        3 - make magicbrownies"
     echo -e "    -d  Use dex optimizations"
     echo -e "    -i  Static Initlogo"
     echo -e "    -j# Set jobs"
@@ -15,10 +18,11 @@ usage()
     echo -e "    -p  Build using pipe"
     echo -e "    -o# Select GCC O Level"
     echo -e "        Valid O Levels are"
-    echo -e "        1 (Os), 3 (O3)"
+    echo -e "        1 (Os) or 3 (O3)"
+    echo -e "    -v  Verbose build output"
     echo -e ""
     echo -e ${txtbld}"  Example:"${txtrst}
-    echo -e "    ./build-zrom.sh -c xt1060"
+    echo -e "    ./build-zrom.sh -c p3100"
     echo -e ""
     exit 1
 }
@@ -84,16 +88,18 @@ opt_jobs="$CPUS"
 opt_sync=0
 opt_pipe=0
 opt_olvl=0
+opt_verbose=0
 
-while getopts "cdij:pso:" opt; do
+while getopts "c:dij:pso:v" opt; do
     case "$opt" in
-    c) opt_clean=1 ;;
+    c) opt_clean="$OPTARG" ;;
     d) opt_dex=1 ;;
     i) opt_initlogo=1 ;;
     j) opt_jobs="$OPTARG" ;;
     s) opt_sync=1 ;;
     p) opt_pipe=1 ;;
     o) opt_olvl="$OPTARG" ;;
+    v) opt_verbose=1 ;;
     *) usage
     esac
 done
@@ -107,14 +113,27 @@ device="$1"
 eval $(grep "^ZROM_VERSION_" vendor/zrom/config/common.mk | sed 's/ *//g')
 VERSION="$ZROM_VERSION_MAJOR.$ZROM_VERSION_MINOR.$ZROM_VERSION_MAINTENANCE"
 
-echo -e ${cya}"Building ${ppl}ZROM ${bldylw}ALPHA 1"${txtrst}
+echo -e ${cya}"Building ${bldppl}ZROM $VERSION"${txtrst}
 
 if [ "$opt_clean" -ne 0 ]; then
     make clean >/dev/null
+    echo -e ""
+    echo -e ${bldblu}"Out is clean"${txtrst}
+    echo -e ""
+elif [ "$opt_clean" -eq 2 ]; then
+    make dirty >/dev/null
+    echo -e ""
+    echo -e ${bldblu}"Out is dirty"${txtrst}
+    echo -e ""
+elif [ "$opt_clean" -eq 3 ]; then
+    make magicbrownies >/dev/null
+    echo -e ""
+    echo -e ${bldblu}"Enjoy your magical adventure"${txtrst}
+    echo -e ""
 fi
 
 # sync with latest sources
-if [ "$opt_sync" -ne 0 ]; then
+if [ "$opt_sync" -eq 1 ]; then
     echo -e ""
     echo -e ${bldblu}"Fetching latest sources"${txtrst}
     repo sync -j"$opt_jobs"
@@ -160,12 +179,12 @@ fi
 if [ "$opt_olvl" -eq 1 ]; then
     export TARGET_USE_O_LEVEL_S=true
     echo -e ""
-    echo -e ${cya}"Using Os Optimization"${txtrst}
+    echo -e ${bldgrn}"Using Os Optimization"${txtrst}
     echo -e ""
 elif [ "$opt_olvl" -eq 3 ]; then
     export TARGET_USE_O_LEVEL_3=true
     echo -e ""
-    echo -e ${cya}"Using O3 Optimization"${txtrst}
+    echo -e ${bldgrn}"Using O3 Optimization"${txtrst}
     echo -e ""
 else
     echo -e ""
@@ -173,7 +192,11 @@ else
     echo -e ""
 fi
 
-mka -j"$opt_jobs" bacon
+if [ "$opt_verbose" -ne 0 ]; then
+make -j"$opt_jobs" showcommands bacon
+else
+make -j"$opt_jobs" bacon
+fi
 echo -e ""
 
 # squisher
@@ -181,7 +204,6 @@ vendor/zrom/tools/squisher
 
 # cleanup unused built
 rm -f $OUTDIR/target/product/$device/zrom_*-ota*.zip
-rm -f $OUTDIR/target/product/$device/ZROM-ZROM-*.zip
 
 # finished? get elapsed time
 t2=$($DATE +%s)

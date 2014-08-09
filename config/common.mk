@@ -73,7 +73,6 @@ SUPERUSER_EMBEDDED := true
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Development \
-    SpareParts \
     Superuser \
     su
 
@@ -81,8 +80,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Basic \
     HoloSpiralWallpaper \
-    NoiseField \
-    Galaxy4 \
     LiveWallpapersPicker \
     PhaseBeam
 
@@ -94,7 +91,6 @@ PRODUCT_PACKAGES += \
 
 # Extra Optional packages
 PRODUCT_PACKAGES += \
-    SlimCenter \
     SlimFileManager \
     LatinIME \
     BluetoothExt \

@@ -91,7 +91,7 @@ opt_pipe=0
 opt_olvl=0
 opt_verbose=0
 
-while getopts "c:dj:prsv" opt; do
+while getopts "c:dj:o:prsv" opt; do
     case "$opt" in
     c) opt_clean="$OPTARG" ;;
     d) opt_dex=1 ;;

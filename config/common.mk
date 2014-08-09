@@ -21,6 +21,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1 \
     persist.sys.root_access=3
 
+# ROM Statistics and ROM Identification
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.romstats.url=http://www.drdevs.com/stats/ose/ \
+    ro.romstats.name=OSE \
+    ro.romstats.version=$(shell date +"%m-%d-%y") \
+    ro.romstats.askfirst=0 \
+    ro.romstats.tframe=1
+
 # Enable ADB authentication and root
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \

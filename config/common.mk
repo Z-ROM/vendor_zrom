@@ -23,9 +23,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # ROM Statistics and ROM Identification
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.romstats.url=http://www.drdevs.com/stats/zrom/ \
+    ro.romstats.url= \
     ro.romstats.name=ZROM \
-    ro.romstats.version=$(shell date +"%m-%d-%y") \
+    ro.romstats.version=$(shell date +"%d-%m-%y") \
     ro.romstats.askfirst=0 \
     ro.romstats.tframe=1
 

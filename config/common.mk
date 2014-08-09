@@ -80,6 +80,7 @@ SUPERUSER_EMBEDDED := true
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Development \
+    ZPapers \
     Superuser \
     su
 

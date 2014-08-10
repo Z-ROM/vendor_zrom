@@ -3,7 +3,7 @@
 #
 
 BOARD_SEPOLICY_DIRS += \
-    vendor/ose/sepolicy
+    vendor/zrom/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     file.te \

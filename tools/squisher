@@ -4,7 +4,7 @@
 # cyanogen
 #
 
-. ${ANDROID_BUILD_TOP}/vendor/ose/tools/colors
+. ${ANDROID_BUILD_TOP}/vendor/zrom/tools/colors
 
 OUT_TARGET_HOST=`uname -a | grep Darwin`
 if [ -z "$OUT_TARGET_HOST" ]
@@ -37,7 +37,7 @@ if [ ! -f "$OTAPACKAGE" ]; then
 	exit 1
 fi
 
-OPTICHARGER=$ANDROID_BUILD_TOP/vendor/ose/tools/opticharger
+OPTICHARGER=$ANDROID_BUILD_TOP/vendor/zrom/tools/opticharger
 QUIET=-q
 DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
 DELETE_MEDIA="*.qmg"
@@ -139,16 +139,16 @@ rm -rf $REPACK/ota/system/etc/recovery-resource.dat
 [ -d $REPACK/ota/system/lib/modules ] && \
         find $REPACK/ota/system/lib/modules -name "*.ko" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
 
-# Delete OSE specific files
-if [ -f $ANDROID_BUILD_TOP/vendor/ose/tools/squisher.rm ]; then
-	for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/ose/tools/squisher.rm`; do
+# Delete Z-ROM specific files
+if [ -f $ANDROID_BUILD_TOP/vendor/zrom/tools/squisher.rm ]; then
+	for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/zrom/tools/squisher.rm`; do
 		rm -f $REPACK/ota/$RM_FILE
 	done
 fi
 
 # Delete target product specific files
-if [ -f $ANDROID_BUILD_TOP/vendor/ose/tools/$TARGET_PRODUCT-squisher.rm ]; then
-	for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/ose/tools/$TARGET_PRODUCT-squisher.rm`; do
+if [ -f $ANDROID_BUILD_TOP/vendor/zrom/tools/$TARGET_PRODUCT-squisher.rm ]; then
+	for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/zrom/tools/$TARGET_PRODUCT-squisher.rm`; do
 		rm -f $REPACK/ota/$RM_FILE
 	done
 fi
@@ -174,12 +174,12 @@ echo MODVERSION: $MODVERSION
 
 if [ -n $ABIGEN ]; then
 	echo ${cya}"Packing in Pre-Built Libs for CPU Variant:${ylw}$ABIGEN"${txtrst}
-	cp ${ANDROID_BUILD_TOP}/vendor/ose/prebuilt/libs/$ABIGEN/libbypass.so $REPACK/ota/system/lib/libbypass.so
+	cp ${ANDROID_BUILD_TOP}/vendor/zrom/prebuilt/libs/$ABIGEN/libbypass.so $REPACK/ota/system/lib/libbypass.so
 	echo ""
 fi
 
 # Add changelog
-. $ANDROID_BUILD_TOP/vendor/ose/tools/changelog
+. $ANDROID_BUILD_TOP/vendor/zrom/tools/changelog
 mv $OUT/Changelog.txt $OUT/$MODVERSION-$TARGET_PRODUCT_FINAL.txt
 
 # Pack it up and sign
@@ -209,16 +209,20 @@ DEVICE=`echo -e $TARGET_PRODUCT | cut -d "_" -f 2`
 
 echo -e ""
 echo -e ${bldppl}"####################################"
-echo -e "#    /OOOOOO   /SSSSSS  /EEEEEEEE  #"
-echo -e "#   /OO__  OO /SS__  SS| EE_____/  #"
-echo -e "#  | OO  \ OO| SS  \__/| EE        #"
-echo -e "#  | OO  | OO|  SSSSSS | EEEEE     #"
-echo -e "#  | OO  | OO \____  SS| EE__/     #"
-echo -e "#  | OO  | OO /SS  \ SS| EE        #"
-echo -e "#  |  OOOOOO/|  SSSSSS/| EEEEEEEE  #"
-echo -e "#   \______/  \______/ |________/  #"
+echo -e "#     ____________                 #"
+echo -e "#    /            /                #"
+echo -e "#   /________    /                 #"
+echo -e "#           /   /                  #"
+echo -e "#          /   /   __   __         #"
+echo -e "#         /   /   |__) |  | |\  /| #"
+echo -e "#        /   /    |\   |  | | \/ | #"
+echo -e "#       /   /     | \  |__| |    | #"
+echo -e "#      /   /                       #"
+echo -e "#     /   /_______________________ #"
+echo -e "#    /                           / #"
+echo -e "#   /___________________________/  #"
 echo -e "####################################"
-echo -e "#      Open Source Evolution       #"
+echo -e "#   Z-ROM -- Nothing gets Better   #"
 echo -e "####################################"${txtrst}
 echo -e ""
 )

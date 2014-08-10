@@ -1,51 +1,9 @@
-Team - OSE
+Z-ROM
 ==========
 
-Asus = 4
+Samsung = 1
 ---------------------------------------------------------------------
-* __Nexus 7 (grouper) :__ timpohladthomas
-* __Nexus 7 3G (tilapia) :__ timpohladthomas
-* __Nexus 7 (2013) (flo) :__ goldflame09, tucstwo
-* __Nexus 7 (2013) (deb) :__ goldflame09, tucstwo
-
-HTC = 3
----------------------------------------------------------------------
-* __One GSM (m7) :__ timpohladthomas
-* __One Sprint (m7spr) :__ timpohladthomas
-* __One Verizon (m7vzw) :__ timpohladthomas
-
-LG = 7
----------------------------------------------------------------------
-* __G2 AT&T (d800) :__ goldflame09
-* __G2 Intl (d802) :__ goldflame09
-* __G2 Sprint (ls980) :__ goldflame09
-* __G2 T-Mobile (d802) :__ goldflame09
-* __G2 Verizon (vs980) :__ tucstwo
-* __Nexus 4 (mako) :__ timpohladthomas
-* __Nexus 5 (hammerhead) :__ timpohladthomas
-
-Motorola = 7
----------------------------------------------------------------------
-* __Atrix HD (moto_msm8960) :__ timpohladthomas
-* __Moto G Unified (falcon) :__ anerikg, Cameron581
-* __Photon Q Sprint (moto_msm8960) :__ timpohladthomas
-* __Photon Q GSM (moto_msm8960) :__ timpohladthomas
-* __Razr HD GSM (moto_msm8960) :__ timpohladthomas
-* __Razr HD Verizon (moto_msm8960) :__ timpohladthomas
-* __Razr M Verizon (moto_msm8960) :__ timpohladthomas
-
-Samsung = 10
----------------------------------------------------------------------
-* __Galaxy S3 Unified (d2lte) :__ timpohladthomas
-* __Galaxy S4 Unified (jflte) :__ timpohladthomas
-* __Galaxy Nexus (maguro) :__ timpohladthomas
-* __Galaxy Nexus (toro) :__ timpohladthomas
-* __Galaxy Nexus (toroplus) :__ timpohladthomas
-* __Galaxy Note 2 LTE (t0lte) :__ timpohladthomas
-* __Galaxy Note 2 AT&T (t0lteatt) :__ timpohladthomas
-* __Galaxy Note 2 T-Mobile (t0ltetmo) :__ timpohladthomas
-* __Galaxy Note 3 Unified (hlte) :__ timpohladthomas
-* __Nexus 10 (manta) :__ timpohladthomas
+* __Galaxy Tab 2 (P3100) :__ zeetherocker
 
 =========
-Total Devices = 31
+Total Devices = 1

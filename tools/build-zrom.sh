@@ -4,7 +4,7 @@ usage()
 {
     echo -e ""
     echo -e ${txtbld}"Usage:"${txtrst}
-    echo -e "  build-ose.sh [options] device"
+    echo -e "  build-zrom.sh [options] device"
     echo -e ""
     echo -e ${txtbld}"  Options:"${txtrst}
     echo -e "    -c# Cleanin options before build:"
@@ -23,20 +23,20 @@ usage()
     echo -e "    -v  Verbose build output"
     echo -e ""
     echo -e ${txtbld}"  Example:"${txtrst}
-    echo -e "    ./build-ose.sh -c moto_msm8960dt"
+    echo -e "    ./build-zrom.sh -c p3100"
     echo -e ""
     exit 1
 }
 
 # colors
-. ./vendor/ose/tools/colors
+. ./vendor/zrom/tools/colors
 
 if [ ! -d ".repo" ]; then
     echo -e ${red}"No .repo directory found.  Is this an Android build tree?"${txtrst}
     exit 1
 fi
-if [ ! -d "vendor/ose" ]; then
-    echo -e ${red}"No vendor/ose directory found.  Is this an OSE build tree?"${txtrst}
+if [ ! -d "vendor/zrom" ]; then
+    echo -e ${red}"No vendor/zrom directory found.  Is this an Z-ROM build tree?"${txtrst}
     exit 1
 fi
 
@@ -113,10 +113,10 @@ fi
 device="$1"
 
 # get current version
-eval $(grep "^OSE_VERSION_" vendor/ose/config/common.mk | sed 's/ [:=]\+ /=/g' | sed 's/shell//g')
-VERSION="$OSE_VERSION_MAJOR.$OSE_VERSION_MINOR.$OSE_VERSION_MAINTENANCE"
+eval $(grep "^ZROM_VERSION_" vendor/zrom/config/common.mk | sed 's/ [:=]\+ /=/g' | sed 's/shell//g')
+VERSION="$ZROM_VERSION_MAJOR.$ZROM_VERSION_MINOR.$ZROM_VERSION_MAINTENANCE"
 
-echo -e ${cya}"Building ${bldppl}OSE"${txtrst}
+echo -e ${cya}"Building ${bldppl}ZROM"${txtrst}
 
 if [ "$opt_clean" -eq 1 ]; then
     make clean >/dev/null
@@ -174,7 +174,7 @@ fi
 # lunch device
 echo -e ""
 echo -e ${bldblu}"Lunching device"${txtrst}
-lunch "ose_$device-userdebug";
+lunch "zrom_$device-userdebug";
 
 echo -e ""
 echo -e ${bldblu}"Starting compilation"${txtrst}
@@ -212,10 +212,10 @@ fi
 echo -e ""
 
 # squisher
-vendor/ose/tools/squisher
+vendor/zrom/tools/squisher
 
 # cleanup unused built
-rm -f $OUTDIR/target/product/$device/ose_*-ota*.zip
+rm -f $OUTDIR/target/product/$device/zrom_*-ota*.zip
 
 # finished? get elapsed time
 t2=$($DATE +%s)

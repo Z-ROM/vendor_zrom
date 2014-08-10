@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012 The OSE Project
+<!-- Copyright (C) 2014 Z-ROM Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,6 +16,6 @@
 
 <!-- This feature shows that this is device features CM NFC enhancements -->
 <permissions>
-    <feature name="com.ose.nfc.enhanced" />
+    <feature name="com.zrom.nfc.enhanced" />
 </permissions>
 

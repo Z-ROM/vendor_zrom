@@ -1,2 +1,2 @@
 # Inherit common stuff
-$(call inherit-product, vendor/ose/config/common.mk)
+$(call inherit-product, vendor/zrom/config/common.mk)

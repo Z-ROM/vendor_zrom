@@ -133,6 +133,7 @@ PRODUCT_PACKAGES += \
     ZStats \
     KernelTweaker \
     OmniSwitch \
+    CMFileManager \
     EOSWeather
 
 # Extra tools

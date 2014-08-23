@@ -47,7 +47,8 @@ DELETE_GALLERY="Gallery2.apk"
 DELETE_FONTS="MTLmr3m.ttf"
 
 REPACK=$OUT/repack.d
-printf "Sanitizing environment..."
+printf "${bldcya}${txtbld}Sanitizing environment..."${txtrst}
+printf ""
 rm -rf $REPACK
 mkdir -p $REPACK
 echo
@@ -57,7 +58,7 @@ echo
 mkdir $REPACK/ota
 (
 cd $REPACK/ota
-printf "Unpacking $OTAPACKAGE..."
+printf "${bldblu}Unpacking $OTAPACKAGE..."${txtrst}
 unzip $QUIET $OTAPACKAGE
 echo
 

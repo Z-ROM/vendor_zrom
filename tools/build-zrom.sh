@@ -116,7 +116,8 @@ device="$1"
 eval $(grep "^ZROM_VERSION_" vendor/zrom/config/common.mk | sed 's/ [:=]\+ /=/g' | sed 's/shell//g')
 VERSION="$ZROM_VERSION_MAJOR.$ZROM_VERSION_MINOR.$ZROM_VERSION_MAINTENANCE"
 
-echo -e ${cya}"Building ${bldppl}ZROM"${txtrst}
+echo -e ${bldgrn}"Building ${bldcya}${txtbld}Z-ROM"${txtrst}
+echo -e ""
 
 if [ "$opt_clean" -eq 1 ]; then
     make clean >/dev/null

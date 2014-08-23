@@ -28,7 +28,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 
 # ROM Statistics and ROM Identification
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.romstats.url=http://www.drdevs.com/stats/zrom/ \
+    ro.romstats.url=http://www.github.com/Z-ROM \
     ro.romstats.name=ZROM \
     ro.romstats.version=$(shell date +"%m-%d-%y") \
     ro.romstats.askfirst=0 \
